@@ -1,0 +1,23 @@
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+interface AuthState {
+  token: string | null
+  username: string | null
+  email: string | null
+  setAuth: (token: string, username: string, email?: string) => void
+  logout: () => void
+}
+
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      token: null,
+      username: null,
+      email: null,
+      setAuth: (token, username, email = '') => set({ token, username, email }),
+      logout: () => set({ token: null, username: null, email: null }),
+    }),
+    { name: 'api-monitor-auth' }
+  )
+)
