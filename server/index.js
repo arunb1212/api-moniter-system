@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' || "http://localhost:5174" }));
+app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' || "http://localhost:5174" || "https://api-moniter-system-rh3c.vercel.app/" }));
 app.use(express.json());
 
 // Health check (public)
